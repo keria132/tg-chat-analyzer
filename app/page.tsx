@@ -1,3 +1,9 @@
+import ChatUpload from '@/components/ChatUpload/ChatUpload';
+
 export default function Home() {
-  return <main></main>;
+  return (
+    <main>
+      <ChatUpload />
+    </main>
+  );
 }
