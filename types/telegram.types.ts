@@ -32,3 +32,23 @@ export interface TelegramMessage {
     text: string;
   }>;
 }
+
+type MessageCategory =
+  | 'textMessages'
+  | 'voiceMessages'
+  | 'videoMessages'
+  | 'photos'
+  | 'videos'
+  | 'stickers'
+  | 'music'
+  | 'gif'
+  | 'unsortedFiles';
+
+export interface UserMessages extends Record<MessageCategory, TelegramMessage[]> {
+  id: string;
+  totalMessages: number;
+}
+
+export interface MessagePerUser {
+  [user: string]: UserMessages;
+}

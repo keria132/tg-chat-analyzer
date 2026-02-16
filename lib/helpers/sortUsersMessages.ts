@@ -1,24 +1,4 @@
-import { TelegramMessage } from '@/types/telegram.types';
-
-type MessageCategory =
-  | 'textMessages'
-  | 'voiceMessages'
-  | 'videoMessages'
-  | 'photos'
-  | 'videos'
-  | 'stickers'
-  | 'music'
-  | 'gif'
-  | 'unsortedFiles';
-
-interface UserMessages extends Record<MessageCategory, TelegramMessage[]> {
-  id: string;
-  totalMessages: number;
-}
-
-interface MessagePerUser {
-  [user: string]: UserMessages;
-}
+import { MessagePerUser, TelegramMessage } from '@/types/telegram.types';
 
 export const sortUsersMessages = (messages: TelegramMessage[]) => {
   const messagesPerUser: MessagePerUser = {};
