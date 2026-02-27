@@ -1,14 +1,21 @@
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '../ui/chart';
-import { ChartComponentProps } from './chart.types';
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '../ui/chart';
+import { UserChartDataItem } from '@/types/chart.types';
+import { cn } from '@/lib/utils';
 
-const CONTAINER_HEIGHT_PER_BAR = 30; //TODO: Move constants out of the file
+const CONTAINER_HEIGHT_PER_BAR = 30;
 const MAX_CHARACTERS_PER_TICK = 11;
 
-const UserActivityChart = ({ chartConfig, chartData }: ChartComponentProps) => (
+interface UserActivityChartProps {
+  chartConfig: ChartConfig;
+  chartData: UserChartDataItem[];
+  className?: string;
+}
+
+const UserActivityChart = ({ chartConfig, chartData, className }: UserActivityChartProps) => (
   <ChartContainer
     config={chartConfig}
-    className={`flex min-h-[200px] w-full`}
+    className={cn('flex w-full', className)}
     style={{
       height: CONTAINER_HEIGHT_PER_BAR * chartData.length,
     }}
