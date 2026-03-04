@@ -1,16 +1,16 @@
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '../ui/chart';
-import { ChartDataItem } from '@/types/chart.types';
+import { MessageActivityChartDataItem } from '@/types/chart.types';
 import { analyticsPalette } from '@/constants/palletes';
 import { cn } from '@/lib/utils';
 
-interface ChatActivityChartProps {
+interface MessageActivityChartProps {
   chartConfig: ChartConfig;
-  chartData: ChartDataItem[];
+  chartData: MessageActivityChartDataItem[];
   className?: string;
 }
 
-const ChatActivityChart = ({ chartConfig, chartData, className }: ChatActivityChartProps) => {
+const MessageActivityChart = ({ chartConfig, chartData, className }: MessageActivityChartProps) => {
   const usersList = Object.keys(chartData[0]).filter(property => property !== 'date' && property !== 'totalMessages');
 
   return (
@@ -30,9 +30,9 @@ const ChatActivityChart = ({ chartConfig, chartData, className }: ChatActivityCh
           <Area
             dataKey={user}
             type='monotone'
-            fill={analyticsPalette[index]}
+            fill={Object.values(analyticsPalette)[index]}
             fillOpacity={0.4}
-            stroke={analyticsPalette[index]}
+            stroke={Object.values(analyticsPalette)[index]}
             key={user}
           />
         ))}
@@ -41,4 +41,4 @@ const ChatActivityChart = ({ chartConfig, chartData, className }: ChatActivityCh
   );
 };
 
-export default ChatActivityChart;
+export default MessageActivityChart;

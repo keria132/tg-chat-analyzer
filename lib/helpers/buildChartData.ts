@@ -1,6 +1,6 @@
 import { TelegramMessage } from '@/types/telegram.types';
 import { sortUsersMessages } from './sortUsersMessages';
-import { ChartDataItem, UserChartDataItem } from '@/types/chart.types';
+import { MessageActivityChartDataItem, UserActivityDataItem } from '@/types/chart.types';
 
 interface MonthlyActvityMap {
   date: string;
@@ -8,7 +8,7 @@ interface MonthlyActvityMap {
   users: Record<string, number>;
 }
 
-export const buildChartData = (chatMessages: TelegramMessage[]): ChartDataItem[] => {
+export const buildChartData = (chatMessages: TelegramMessage[]): MessageActivityChartDataItem[] => {
   const dateOptions: Intl.DateTimeFormatOptions = { month: 'long', year: 'numeric' };
   const dateFormat = new Intl.DateTimeFormat('en-US', dateOptions);
   const monthlyActivityMap: Record<string, MonthlyActvityMap> = {};
@@ -49,11 +49,17 @@ export const buildChartData = (chatMessages: TelegramMessage[]): ChartDataItem[]
   return data;
 };
 
-export const buildUsersChartData = (messages: TelegramMessage[]): UserChartDataItem[] => {
+export const buildUserActivityChartData = (messages: TelegramMessage[]): UserActivityDataItem[] => {
   const messagesPerUser = sortUsersMessages(messages);
-  //TODO: Filter the bot participants here
-  return Object.keys(messagesPerUser).map(userName => ({
-    user: userName,
-    messages: messagesPerUser[userName].totalMessages,
-  }));
+  const usersChartData = Object.entries(messagesPerUser).map(
+    ([user, { totalMessages, textMessages, voiceMessages, videoMessages }]) => ({
+      user,
+      totalMessages,
+      textMessages: textMessages.length,
+      voiceMessages: voiceMessages.length,
+      videoMessages: videoMessages.length,
+    })
+  );
+
+  return usersChartData;
 };
