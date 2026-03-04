@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { cn } from '@/lib/utils';
 
 interface ChartCardWrapper {
@@ -8,6 +8,7 @@ interface ChartCardWrapper {
   chartFooterText?: string;
   chartDate: string;
   children: ReactNode;
+  action?: ReactNode;
   className?: string;
 }
 
@@ -17,12 +18,14 @@ const ChartCardWrapper = ({
   chartFooterText,
   chartDate,
   children,
+  action,
   className,
 }: ChartCardWrapper) => (
   <Card className={cn('gap-4', className)}>
     <CardHeader>
       <CardTitle>{chartTitle}</CardTitle>
       <CardDescription>{chartDescription}</CardDescription>
+      <CardAction>{action}</CardAction>
     </CardHeader>
     <CardContent>{children}</CardContent>
     <CardFooter className='flex-col items-start'>

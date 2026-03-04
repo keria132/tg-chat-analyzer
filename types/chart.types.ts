@@ -1,10 +1,12 @@
-export interface ChartDataItem {
+export interface MessageActivityChartDataItem {
   date: string;
   totalMessages: number;
   [key: string]: string | number;
 }
 
-export interface UserChartDataItem {
+export type MessageCategory = 'textMessages' | 'voiceMessages' | 'videoMessages';
+
+export interface UserActivityDataItem extends Record<MessageCategory, number> {
   user: string;
-  messages: number;
+  totalMessages: number;
 }
