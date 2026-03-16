@@ -62,11 +62,7 @@ const ChatAnalysisPanel = ({ chatAnalysis, messageCountByUser }: ChatAnalysisPan
                       <span className='text-sm'>{SCORE_LABELS[scoreName]}</span>
                       <span className='ml-auto'>{scoreValue}</span>
                     </div>
-                    <Progress
-                      indicatorClassName={USER_INDICATOR_COLORS[userIndex]}
-                      value={scoreValue * 10}
-                      id='progress-upload'
-                    />
+                    <Progress indicatorClassName={USER_INDICATOR_COLORS[userIndex]} value={scoreValue * 10} />
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className='text-muted-foreground'>{user.insights[scoreName]}</AccordionContent>

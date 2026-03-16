@@ -5,7 +5,7 @@ import { ChatAnalysisResponseSchema } from '@/lib/schemas/chatAnalysis.schemas';
 import { GoogleGenAI } from '@google/genai';
 import z from 'zod';
 
-const ai = new GoogleGenAI({});
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 const MODEL_CODE = 'gemini-2.5-flash';
 
 const SCORING_CRITERIA = `
@@ -59,13 +59,6 @@ export const getChatAnalysis = async (messages: TextMessage[], chatType: ChatTyp
   const chatAnalysisPrompt = prompts[chatType] + `\n Messages: ${formattedMessages}`;
 
   try {
-    const countTokensResponse = await ai.models.countTokens({
-      model: MODEL_CODE,
-      contents: chatAnalysisPrompt,
-    });
-
-    console.log('TOTAL TOKENS: ', countTokensResponse.totalTokens);
-
     const response = await ai.models.generateContent({
       model: MODEL_CODE,
       config: GEMINI_CONFIG,

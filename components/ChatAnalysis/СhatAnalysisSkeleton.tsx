@@ -2,7 +2,12 @@ import { cn } from '@/lib/utils';
 import { Skeleton } from '../ui/skeleton';
 import { SCORE_LABELS } from './chatAnalysis.constants';
 
-const ChatAnalysisSkeleton = ({ users, className }: { users: Set<string>; className?: string }) => (
+interface ChatAnalysisSkeletonProps {
+  users: Set<string>;
+  className?: string;
+}
+
+const ChatAnalysisSkeleton = ({ users, className }: ChatAnalysisSkeletonProps) => (
   <section className={cn('flex w-full flex-wrap items-start gap-4', className)}>
     <div className='flex w-full items-center gap-4 rounded-lg border p-4'>
       <Skeleton className='size-10 shrink-0 rounded-md' />

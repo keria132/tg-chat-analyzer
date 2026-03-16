@@ -95,11 +95,7 @@ const ChatAnalysis = ({ chatMessages, className }: ChatAnalysisProps) => {
   return (
     <section className={cn('flex flex-wrap items-start gap-4', className)}>
       <h3 className='w-full text-center text-2xl'>Chat AI Analysis</h3>
-      {isLoading ? (
-        <ChatAnalysisSkeleton users={users} />
-      ) : (
-        <ChatAnalysisPanel chatAnalysis={chatAnalysis} messageCountByUser={messageCountByUser} />
-      )}
+      <ChatAnalysisPanel chatAnalysis={chatAnalysis} messageCountByUser={messageCountByUser} />
     </section>
   );
 };
