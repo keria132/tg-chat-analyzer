@@ -45,8 +45,6 @@ const ChatUpload = () => {
     };
 
     fileReader.onprogress = event => {
-      //TODO: Progress bar here
-      console.log(event.loaded);
       if (event.lengthComputable) {
         const progress = (event.loaded / event.total) * 100;
         toast.loading(`Uploading: ${progress.toFixed(2)}%`, { id: toastUploadId }); //TODO: Improve progress bar %

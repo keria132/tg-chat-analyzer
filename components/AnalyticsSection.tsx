@@ -1,36 +1,17 @@
-import { ChartConfig } from './ui/chart';
 import { TelegramChatExport } from '@/types/telegram.types';
 import { buildChartData, buildUserActivityChartData } from '@/lib/helpers';
 import { useMemo, useState } from 'react';
 import ChartCardWrapper from './Charts/ChartCardWrapper';
 import MessageActivityChart from './Charts/MessageActivityChart';
 import UserActivityChart from './Charts/UserActivityChart';
-import { analyticsPalette } from '@/constants/palletes';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { ActivityChartConfig } from './Charts/chartConfigs';
+import { Separator } from './ui/separator';
+import ChatAnalysis from './ChatAnalysis/ChatAnalysis';
 
 const AnalyticsSection = ({ chatData }: { chatData: TelegramChatExport }) => {
   const [metricKey, setMetricKey] = useState<keyof typeof ActivityChartConfig>('totalMessages');
   type MetricKeyType = keyof typeof ActivityChartConfig;
-
-  //TODO: put config in separate file
-  const ActivityChartConfig = {
-    totalMessages: {
-      label: 'Messages',
-      color: '#60a5fa',
-    },
-    voiceMessages: {
-      label: 'Voice Messages',
-      color: analyticsPalette.emerald,
-    },
-    videoMessages: {
-      label: 'Video Messages',
-      color: analyticsPalette.amber,
-    },
-    textMessages: {
-      label: 'Text Messages',
-      color: analyticsPalette.violet,
-    },
-  } satisfies ChartConfig;
 
   const chartData = useMemo(() => buildChartData(chatData.messages), [chatData.messages]);
   const usersChartData = useMemo(() => buildUserActivityChartData(chatData.messages), [chatData.messages]);
@@ -38,8 +19,9 @@ const AnalyticsSection = ({ chatData }: { chatData: TelegramChatExport }) => {
 
   return (
     <div className='m-auto mt-10 grid grid-cols-2 items-start justify-start gap-4'>
+      <h2 className='col-span-2 text-center text-2xl'>Chat basic metrics</h2>
       <ChartCardWrapper
-        chartTitle='Chat activity'
+        chartTitle='Chat overall activity'
         chartDescription='Activity per month'
         chartFooterText='Chat messages activity'
         chartDate={chatActivityDate}
@@ -81,6 +63,8 @@ const AnalyticsSection = ({ chatData }: { chatData: TelegramChatExport }) => {
           metricKey={metricKey}
         />
       </ChartCardWrapper>
+      <Separator className='col-span-2' />
+      <ChatAnalysis className='col-span-2' chatMessages={chatData.messages} />
     </div>
   );
 };

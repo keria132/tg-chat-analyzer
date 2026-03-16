@@ -6,7 +6,7 @@ interface ChartCardWrapper {
   chartTitle: string;
   chartDescription: string;
   chartFooterText?: string;
-  chartDate: string;
+  chartDate?: string;
   children: ReactNode;
   action?: ReactNode;
   className?: string;
