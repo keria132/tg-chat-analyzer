@@ -9,9 +9,10 @@ import { ActivityChartConfig } from './Charts/chartConfigs';
 import { Separator } from './ui/separator';
 import ChatAnalysis from './ChatAnalysis/ChatAnalysis';
 
+type MetricKeyType = keyof typeof ActivityChartConfig;
+
 const AnalyticsSection = ({ chatData }: { chatData: TelegramChatExport }) => {
   const [metricKey, setMetricKey] = useState<keyof typeof ActivityChartConfig>('totalMessages');
-  type MetricKeyType = keyof typeof ActivityChartConfig;
 
   const chartData = useMemo(() => buildChartData(chatData.messages), [chatData.messages]);
   const usersChartData = useMemo(() => buildUserActivityChartData(chatData.messages), [chatData.messages]);

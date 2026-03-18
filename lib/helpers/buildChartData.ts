@@ -2,7 +2,7 @@ import { TelegramMessage } from '@/types/telegram.types';
 import { sortUsersMessages } from './sortUsersMessages';
 import { MessageActivityChartDataItem, UserActivityDataItem } from '@/types/chart.types';
 
-interface MonthlyActvityMap {
+interface MonthlyActivityMap {
   date: string;
   totalMessages: number;
   users: Record<string, number>;
@@ -11,7 +11,7 @@ interface MonthlyActvityMap {
 export const buildChartData = (chatMessages: TelegramMessage[]): MessageActivityChartDataItem[] => {
   const dateOptions: Intl.DateTimeFormatOptions = { month: 'long', year: 'numeric' };
   const dateFormat = new Intl.DateTimeFormat('en-US', dateOptions);
-  const monthlyActivityMap: Record<string, MonthlyActvityMap> = {};
+  const monthlyActivityMap: Record<string, MonthlyActivityMap> = {};
   const usersList = new Set<string>();
 
   for (const message of chatMessages) {

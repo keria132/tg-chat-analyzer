@@ -1,6 +1,6 @@
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '../ui/chart';
-import { MessageCategory, UserActivityDataItem } from '@/types/chart.types';
+import { MessageCategoryMetrics, UserActivityDataItem } from '@/types/chart.types';
 import { cn } from '@/lib/utils';
 
 const CONTAINER_HEIGHT_BASE = 30;
@@ -10,7 +10,7 @@ const MAX_CHARACTERS_PER_TICK = 11;
 interface UserActivityChartProps {
   chartConfig: ChartConfig;
   chartData: UserActivityDataItem[];
-  metricKey: MessageCategory | 'totalMessages';
+  metricKey: MessageCategoryMetrics | 'totalMessages';
   className?: string;
 }
 

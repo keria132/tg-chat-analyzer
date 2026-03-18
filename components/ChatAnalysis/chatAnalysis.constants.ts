@@ -9,3 +9,5 @@ export const SCORE_LABELS: Record<string, string> = {
   expressiveness: 'Expressiveness',
   powerDynamics: 'Power dynamic',
 };
+
+export const tendencies = ['Romantic', 'Friendly', 'Mixed', 'Neutral', 'Unclear'] as const;

@@ -1,6 +1,5 @@
+import { tendencies } from '@/components/ChatAnalysis/chatAnalysis.constants';
 import z from 'zod';
-
-const tendencies = ['Romantic', 'Friendly', 'Mixed', 'Neutral', 'Unclear'] as const;
 
 const UserAnalysisSchema = z.object({
   username: z.string().describe('Name of the user'),
