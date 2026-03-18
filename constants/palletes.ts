@@ -1,4 +1,4 @@
-import { tendencies } from '@/components/ChatAnalysis/chatAnalysis.constants';
+import { tendencies } from '@/types/chart.types';
 
 export const analyticsPalette = {
   blue: '#3B82F6',

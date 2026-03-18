@@ -67,7 +67,7 @@ Open [http://localhost:3000](http://localhost:3000).
 2. Go to the chat you want to analyze
 3. Click the **⋮ menu** → **Export chat history**
 4. Select **JSON** format
-5. Uncheck everything to export only text messages
+5. Uncheck media files to avoid exporting the actual files, message metadata is still included
 6. Choose your date range and click **Export**
 7. Upload the resulting `result.json` to the app
 

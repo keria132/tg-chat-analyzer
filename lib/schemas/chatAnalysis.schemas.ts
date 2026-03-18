@@ -1,4 +1,4 @@
-import { tendencies } from '@/components/ChatAnalysis/chatAnalysis.constants';
+import { tendencies } from '@/types/chart.types';
 import z from 'zod';
 
 const UserAnalysisSchema = z.object({
