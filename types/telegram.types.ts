@@ -33,7 +33,7 @@ export interface TelegramMessage {
   }>;
 }
 
-type MessageCategory =
+export type MessageCategory =
   | 'textMessages'
   | 'voiceMessages'
   | 'videoMessages'

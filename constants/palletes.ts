@@ -1,3 +1,5 @@
+import { tendencies } from '@/types/chart.types';
+
 export const analyticsPalette = {
   blue: '#3B82F6',
   red: '#EF4444',
@@ -13,11 +15,12 @@ export const analyticsPalette = {
   purple: '#A855F7',
 };
 
-export const TENDENCY_STYLES: Record<string, string> = {
+export const TENDENCY_STYLES: Record<(typeof tendencies)[number], string> = {
   Romantic: 'bg-pink-100 text-pink-800 border-pink-200',
   Friendly: 'bg-blue-100 text-blue-800 border-blue-200',
   Mixed: 'bg-amber-100 text-amber-800 border-amber-200',
   Unclear: 'bg-gray-100 text-gray-800 border-gray-200',
+  Neutral: 'bg-slate-100 text-slate-700 border-slate-200',
 };
 
 export const USER_INDICATOR_COLORS = [

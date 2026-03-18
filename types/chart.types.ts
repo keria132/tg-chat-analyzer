@@ -4,9 +4,11 @@ export interface MessageActivityChartDataItem {
   [key: string]: string | number;
 }
 
-export type MessageCategory = 'textMessages' | 'voiceMessages' | 'videoMessages';
+export type MessageCategoryMetrics = 'textMessages' | 'voiceMessages' | 'videoMessages';
 
-export interface UserActivityDataItem extends Record<MessageCategory, number> {
+export interface UserActivityDataItem extends Record<MessageCategoryMetrics, number> {
   user: string;
   totalMessages: number;
 }
+
+export const tendencies = ['Romantic', 'Friendly', 'Mixed', 'Neutral', 'Unclear'] as const;

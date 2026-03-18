@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CircleAlert } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { MESSAGES_CAPACITY } from './chatAnalysis.constants';
-import ChatAnalysisSkeleton from './СhatAnalysisSkeleton';
+import ChatAnalysisSkeleton from './ChatAnalysisSkeleton';
 import { Button } from '../ui/button';
 import { ChatType, TextMessage } from './chatAnalysis.types';
 import ChatAnalysisPanel from './ChatAnalysisPanel';
@@ -83,7 +83,7 @@ const ChatAnalysis = ({ chatMessages, className }: ChatAnalysisProps) => {
       <div className='col-span-full flex flex-col items-center gap-2'>
         <div className='text-destructive flex items-center gap-2'>
           <CircleAlert className='w-4' />
-          <p className='text-lg'>An Error occured!</p>
+          <p className='text-lg'>An Error occurred!</p>
         </div>
         <p className=''>{error}</p>
         <Button variant='outline' onClick={fetchChatAnalysis}>
